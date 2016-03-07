@@ -1,0 +1,22 @@
+body {
+  background-color: #00ADFF;
+}
+
+#container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+.tictactoebox {
+  line-height: 10px;
+  align-items: center;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  display: inline-block;
+  margin: 2px;
+}
