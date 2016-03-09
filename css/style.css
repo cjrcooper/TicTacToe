@@ -1,16 +1,10 @@
 body {
   background-color: #00ADFF;
-}
-
-#container {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
+  /*width: 100%;*/
 }
 
 .tictactoebox {
-  line-height: 10px;
-  align-items: center;
+
 }
 
 .box {
