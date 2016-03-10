@@ -15,6 +15,10 @@ body {
   font-family: indie flower;
 }
 
+.size {
+  font-size: 18pt;
+}
+
 
 #container {
   padding-top: 80px;
@@ -76,10 +80,12 @@ body {
 
 .gridSize {
   font-size: 40pt;
+  color: #00ADFF;
 }
 
 .gridCheck p {
   font-size: 16pt;
+  font-family: Lobster;
 }
 
 
