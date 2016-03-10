@@ -40,6 +40,11 @@ $(document).ready(function() {
             setRules.defineColumn(size);
             setRules.gridSize = size;
             setRules.maxValue = size * size;
+            if (size === 3){
+              $("#container").css({
+                  height: 100 + "vh"
+              })
+            };
             $('body').css({
                 width: 100 + "%"
             });
@@ -117,41 +122,60 @@ $(document).ready(function() {
           setRules.totalGamesPlayed = x + y;
 
             if (setRules.winner === 1 && setRules.computerPlayer === 1) {
-              if (setRules.totalGamesPlayed === setRules.gameLength){
-                swal('You Win!', 'Congratulations!', 'success')
+              // if (setRules.totalGamesPlayed === setRules.gameLength){
+                swal('You Win!', 'Congratulations!', 'success');
+                $('.sweet-confirm.styled').on('click', function(){
+                  window.location = window.location;
+                });
                 return;
-              } else {
-                setTimeout($('.row').find('.box').remove());
-                setTimeout($('#tictactoebox').find('.row').remove());
-                setTimeout(setRules.defineGrid, 1000);
-                setTimeout(setRules.startGame, 1000);
-              };
+              // } else {
+              //   setTimeout($('.row').find('.box').remove());
+              //   setTimeout($('#tictactoebox').find('.row').remove());
+              //   setTimeout(setRules.defineGrid, 1000);
+              //   setTimeout(setRules.startGame, 1000);
+              // };
 
             } else if (setRules.winner === 2 && setRules.computerPlayer === 1) {
-                swal('Game Over!', 'The Computer Wins!', 'error')
+                swal('Game Over!', 'The Computer Wins!', 'error');
+                $('.sweet-confirm.styled').on('click', function(){
+                  window.location = window.location;
+                });
                 return;
             } else if (setRules.winner === 1) {
                 swal('Player 1 Wins!', 'Congratulations', 'success');
+                $('.sweet-confirm.styled').on('click', function(){
+                  window.location = window.location;
+                });
                 return;
             } else if (setRules.winner === 2) {
                 swal('Player 2 Wins!', 'Congratulations', 'success');
+                $('.sweet-confirm.styled').on('click', function(){
+                  window.location = window.location;
+                });
                 return;
             }
         },
 
 
         "makeTurn": function() {
-
+          if (setRules.winner === 2 || setRules.winner === 1){
+            return;
+          }
             if (setRules.computerPlayer === 1) {
                 $(".box").on("click", function() {
+                  if (setRules.firstPlayer === setRules.secondPlayer){
                     if ($(this).children().hasClass("circle") === false || $(this).children().hasClass("cross") === false) {
                         $(this).append("<div class='cross'>");
                         setRules.firstPlayerNumbers.push($(this).data('value'));
                         setRules.checkFirstPlayerWin();
                         setRules.gameAlerts();
+                        if (setRules.winner === 2 || setRules.winner === 1){
+                          return;
+                        }
                         setRules.firstPlayer++;
                         setTimeout(setRules.computerTurn, 1000);
                     }
+                  }
                 })
 
             } else {
@@ -161,12 +185,18 @@ $(document).ready(function() {
                         setRules.firstPlayerNumbers.push($(this).data('value'));
                         setRules.checkFirstPlayerWin();
                         setRules.gameAlerts();
+                        if (setRules.winner === 2 || setRules.winner === 1){
+                          return;
+                        }
                         setRules.firstPlayer++;
                     } else if (setRules.firstplayer !== setRules.secondPlayer) {
                         $(this).append("<div class='circle'>");
                         setRules.secondPlayerNumbers.push($(this).data('value'));
                         setRules.checkSecondPlayerWin();
                         setRules.gameAlerts();
+                        if (setRules.winner === 2 || setRules.winner === 1){
+                          return;
+                        }
                         setRules.secondPlayer++;
                     }
                 })
@@ -284,6 +314,9 @@ $(document).ready(function() {
         $('#scoreScreen').fadeIn(4000);
         $('#container').fadeIn(2000);
     })
-
+    $('.sweet-confirm.styled').on('click', function(){
+      console.log('something');
+    });
+    console.log('sweet buttons listening for clicks', $('.sweet-confirm.styled').length);
 
 });
